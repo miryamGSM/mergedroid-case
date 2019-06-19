@@ -41,6 +41,12 @@ namespace PlasticDrive.Writable
             mVirtualFiles = virtualFiles;
         }
 
+        internal void NotifyPlasticWkTreeChanged(uint nodeId)
+        {
+            // just launch a new thread to do the deserialization and update
+            ThreadPool.QueueUserWorkItem(ReloadWkTree, nodeId + 10);
+        }
+
         internal WorkspaceContent GetWorkspaceContent()
         {
             lock (this)
@@ -105,11 +111,6 @@ namespace PlasticDrive.Writable
             }
         }
 
-        internal void NotifyPlasticWkTreeChanged(uint nodeId)
-        {
-            // just launch a new thread to do the deserialization and update
-            ThreadPool.QueueUserWorkItem(ReloadWkTree, nodeId + 10);
-        }
 
         void ChangeSelector(object o)
         {
