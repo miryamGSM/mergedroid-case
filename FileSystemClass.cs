@@ -44,7 +44,8 @@ namespace PlasticDrive.Writable
         internal void NotifyPlasticWkTreeChanged(uint nodeId)
         {
             // just launch a new thread to do the deserialization and update
-            ThreadPool.QueueUserWorkItem(ReloadWkTree, nodeId + 10);
+            // plus a new comment
+            ThreadPool.QueueUserWorkItem(ReloadWkTree, nodeId + 20);
         }
 
         internal WorkspaceContent GetWorkspaceContent()
@@ -110,7 +111,6 @@ namespace PlasticDrive.Writable
                 mLog.ErrorFormat("Error in ReloadWkTree {0}", e.Message);
             }
         }
-
 
         void ChangeSelector(object o)
         {
