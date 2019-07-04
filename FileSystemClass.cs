@@ -1,4 +1,5 @@
-﻿using System;
+﻿using XDiffGui;
+using System;
 using System.Collections.Generic;
 using System.Collections;
 using System.IO;
